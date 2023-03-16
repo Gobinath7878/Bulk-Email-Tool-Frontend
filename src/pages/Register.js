@@ -27,7 +27,7 @@ const Register = () => {
 const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch.post(`https://bulk-email-tool-backend-ulpd.onrender.com/api/v1/auth/register`,{
+      const res = await fetch(`https://bulk-email-tool-backend-ulpd.onrender.com/api/v1/auth/register`,{
         method:'post',
         headers:{
           "content-type":"application/json",
