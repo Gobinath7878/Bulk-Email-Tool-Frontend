@@ -1,0 +1,50 @@
+.sendEmail-container form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .sendEmail-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+.sendEmail-container input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .sendEmail-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sendEmail-container li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .sendEmail-container button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .sendEmail-container button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  
+  

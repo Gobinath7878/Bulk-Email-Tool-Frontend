@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+ul {
+  list-style-type: none;
+}
+li{
+  padding: 5px;
+}
+a{
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+}
+a:hover{
+    color: rgb(7, 230, 25);
+}
+input{
+  outline: none;
+  width:300px;
+  height: 45px;
+  padding: 10px;
+  font-size:18px;
+  border-radius:5px;
+  border: none !important;
+}
+/* home css */
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-container p{
+    line-height: 30px;
+    text-align: justify;
+  }
+  .team-image {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    height: 250px;
+  }
+  .highlight{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(103, 175, 31);
+  }
+  /* students/teachers */
+.teacher-container{
+  background: #cae5fa;
+  border-radius: 10px;
+}
+.teacher-container h2{
+  font-size: 25px;
+  margin-bottom: 32px;
+  color: rgb(41, 42, 43);
+  padding:5px;
+}
+.teacher-container h2 i{
+  font-size: 45px;
+  padding-right:5px;
+}
+.teacher-container h2 span{
+  font-size: 40px;
+}
+.teacher-container p{
+   padding-left: 0 !important;
+   padding: 15px;
+    font-size:12px;
+    text-align:justify;
+}
+.teacher-container p span{
+  font-size: 15px;
+}
+  .input-container{
+    background-color: white;
+    width:450px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .button{
+    width: 150px;
+    height: 45px;
+    padding:5px;
+    border: none !important;
+    border-radius: 5px;
+    background: rgb(56, 231, 12);
+    color: rgb(250, 250, 250);
+    font-size: 19px;
+  }
+.button:hover{
+  background: rgb(76, 212, 13);
+}
+.button-send{
+  width: 100px;
+  height: 45px;
+  padding:5px;
+  border: none !important;
+  border-radius: 5px;
+  background: rgb(9, 25, 117);
+  color: rgb(250, 250, 250);
+}
+  .circular{
+    padding: 10px;
+    border-radius: 5px;
+    background: #cae5fa;
+  }
+  .circular h1 {
+    text-align: center;
+    color: #363434;
+    font-size:15px;
+    margin-top:0;
+    margin-bottom: 20px;
+    background: #fdfdfd;
+    padding: 10px;
+    border-radius:5px;
+  }
+  .circular p {
+    margin: 0 20px 20px 20px;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #2b2929;
+  }
+  .circular p.signature {
+    font-style: italic;
+    text-align: right;
+  }
+  .canvas-container{
+    background: #cae5fa;
+  }
+
+
