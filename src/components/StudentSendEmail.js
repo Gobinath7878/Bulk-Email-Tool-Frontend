@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import api from "../api";
 import { Button } from "react-bootstrap";
 import '../styles/sendEmail.css'
-
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function SendEmail() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [recipientIds, setRecipientIds] = useState([]);
   const [recipients, setRecipients] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     getRecipients();
@@ -23,7 +24,6 @@ function SendEmail() {
       setRecipientIds(response.data.map((recipient) => recipient._id)); // Set initial value to all recipient IDs
     } catch (error) {
       console.log(error);
-      setErrorMessage("Error retrieving recipients");
     }
   };
 
@@ -47,7 +47,7 @@ function SendEmail() {
         message,
         recipients: selectedRecipients,
       });
-      setShowSuccessMessage("Mail sent successfully to recipients");
+      toast.success("Mail send successfully to students");
       setSubject("");
       setMessage("");
       setRecipientIds([]);
@@ -57,12 +57,14 @@ function SendEmail() {
       console.log(response)
     } catch (error) {
       console.log(error);
-      setErrorMessage("Error sending email");
+      toast.error("Error sending mails");
     }
   };
   
 
   return (
+    <>
+    <ToastContainer/>
     <form onSubmit={handleSubmit}>
       <div className="sendEmail-container">
         <label htmlFor="subject">Subject:</label>
@@ -99,12 +101,8 @@ function SendEmail() {
           ))}
         </ul>
       </div>
-     
-      {errorMessage && <div>{errorMessage}</div>}
-      {showSuccessMessage && (
-        <div>Email sent successfully to recipients.</div>
-      )}
     </form>
+    </>
   );
 }
 
