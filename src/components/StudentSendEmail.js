@@ -42,7 +42,7 @@ function SendEmail() {
         recipientIds.includes(recipient._id)
       );
   
-      const response = await api.post("/api/v1/send/email/students", {
+      const response = await api.post("/api/v1/recipient/send/mail", {
         subject,
         message,
         recipients: selectedRecipients,

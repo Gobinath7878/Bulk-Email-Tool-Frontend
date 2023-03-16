@@ -41,7 +41,7 @@ function TeacherSendEmail() {
       teacherIds.includes(teachers._id)
       );
   
-      const response = await api.post("/api/v1/send/email/teacher", {
+      const response = await api.post("/api/v1/teacher/send/email", {
         subject,
         message,
         teacher: selectedTeacher,

@@ -28,7 +28,7 @@ const Login = () => {
         dispatch({type:'LOGIN_START',payload: credentials})
       try{
           
-        const res = await fetch(`http://localhost:4000/api/v1/auth/login`,{
+        const res = await fetch(`https://bulk-email-tool-backend-ulpd.onrender.com/api/v1/auth/login`,{
           method:"post",
          headers:{
         "content-type":"application/json",

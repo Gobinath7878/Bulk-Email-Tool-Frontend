@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:4000'
+  baseURL: 'https://bulk-email-tool-backend-ulpd.onrender.com'
 });
 
 export default instance;
