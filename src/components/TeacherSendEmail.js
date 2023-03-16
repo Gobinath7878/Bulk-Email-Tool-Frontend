@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import api from "../api";
 import { Button } from "react-bootstrap";
 import '../styles/sendEmail.css'
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+
 
 function TeacherSendEmail() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [teacherIds, setTeacherIds] = useState([]);
   const [Teacher, setTeacher] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     getTeacher();
@@ -22,7 +25,6 @@ function TeacherSendEmail() {
       setTeacherIds(response.data.map((teachers) => teachers._id)); // Set initial value to all Teacher IDs
     } catch (error) {
       console.log(error);
-      setErrorMessage("Error retrieving Teacher");
     }
   };
 
@@ -46,7 +48,7 @@ function TeacherSendEmail() {
         message,
         teacher: selectedTeacher,
       });
-      setShowSuccessMessage("Mail sent successfully to Teacher");
+      toast.success("Mail send Successfully");
       setSubject("");
       setMessage("");
       setTeacherIds([]);
@@ -56,12 +58,14 @@ function TeacherSendEmail() {
       console.log(response)
     } catch (error) {
       console.log(error);
-      setErrorMessage("Error sending email");
+      toast.error("Error sending mails");
     }
   };
   
 
   return (
+    <>
+    <ToastContainer/>
     <form onSubmit={handleSubmit}>
       <div className="sendEmail-container">
         <label htmlFor="subject">Subject:</label>
@@ -99,12 +103,8 @@ function TeacherSendEmail() {
           ))}
         </ul>
       </div>
-      
-      {errorMessage && <div>{errorMessage}</div>}
-      {showSuccessMessage && (
-        <div>Email sent successfully to Teacher.</div>
-      )}
     </form>
+    </>
   );
 }
 

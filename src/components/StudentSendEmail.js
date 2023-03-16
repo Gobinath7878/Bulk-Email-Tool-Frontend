@@ -47,7 +47,7 @@ function SendEmail() {
         message,
         recipients: selectedRecipients,
       });
-      toast.success("Mail send successfully to students");
+      toast.success("Mail send Successfully");
       setSubject("");
       setMessage("");
       setRecipientIds([]);
