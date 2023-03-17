@@ -45,7 +45,7 @@ function TeacherSendEmail() {
       const response = await api.post("/api/v1/teacher/send/mail", {
         subject,
         message,
-        teacher: selectedTeachers,
+        teachers: selectedTeachers,
       });
       toast.success("Mail send Successfully");
       setSubject("");
