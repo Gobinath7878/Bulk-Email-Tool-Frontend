@@ -10,9 +10,7 @@ function SendEmail() {
   const [message, setMessage] = useState("");
   const [recipientIds, setRecipientIds] = useState([]);
   const [recipients, setRecipients] = useState([]);
-  // const [errorMessage, setErrorMessage] = useState("");
-  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
+ 
   useEffect(() => {
     getRecipients();
   }, []);

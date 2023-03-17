@@ -20,6 +20,7 @@ function Recipients() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
   //get all recipients
   useEffect(() => {
     const fetchRecipients = async () => {

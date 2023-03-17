@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 
 function Teacher() {
-  const [teacher, setTeacher] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [newTeacher, setNewTeacher] = useState("");
   const [editedTeacher, setEditedTeacher] = useState("");
   const [editingTeacherId, setEditingTeacherId] = useState(null);
@@ -24,15 +24,15 @@ function Teacher() {
 
   //get all teachers
   useEffect(() => {
-    const fetchTeacher = async () => {
+    const fetchTeachers = async () => {
       try {
         const response = await api.get("/api/v1/teacher/getAll");
-        setTeacher(response.data);
+        setTeachers(response.data);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchTeacher();
+    fetchTeachers();
   }, []);
 
   //add Teacher
@@ -40,9 +40,9 @@ function Teacher() {
     event.preventDefault();
     try {
       const response = await api.post("/api/v1/teacher/create", {
-        email: newTeacher,
+        email: newTeacher
       });
-      setTeacher([...teacher, response.data]);
+      setTeachers([...teachers, response.data]);
       toast.success("Teacher added successfully");
       setNewTeacher("");
     // set timeout for success message to disappear after 3 seconds
@@ -56,7 +56,7 @@ function Teacher() {
   const handleDeleteTeacher = async (id) => {
     try {
       await api.delete(`/api/v1/teacher/delete/${id}`);
-      setTeacher(teacher.filter((teachers) => teachers._id !== id));
+      setTeachers(teachers.filter((teacher) => teacher._id !== id));
       toast.success("Teacher deleted successfully");
     } catch (error) {
       console.log(error);
@@ -66,8 +66,8 @@ function Teacher() {
 
   const handleEditTeacher = async (id) => {
     setEditingTeacherId(id);
-    const teachers = teacher.find((teacher) => teacher._id === id);
-    setEditedTeacher(teachers.email);
+    const teacher = teachers.find((teacher) => teacher._id === id);
+    setEditedTeacher(teacher.email);
     //console.log(teachers.email)
   };
 
@@ -80,9 +80,9 @@ function Teacher() {
           email: editedTeacher,
         }
       );
-      setTeacher(
-        teacher.map((teachers) =>
-          teachers._id === editingTeacherId ? response.data : teachers
+      setTeachers(
+        teachers.map((teacher) =>
+          teacher._id === editingTeacherId ? response.data : teacher
         )
       );
       setEditedTeacher("");
@@ -161,10 +161,10 @@ function Teacher() {
     </tr>
   </thead>
   <tbody>
-    {teacher.map((teachers) => (
-      <tr key={teachers._id}>
+    {teachers.map((teacher) => (
+      <tr key={teacher._id}>
         <td>
-          {editingTeacherId === teachers._id ? (
+          {editingTeacherId === teacher._id ? (
             <form onSubmit={handleUpdateTeacher}>
               <label>
                 Email:
@@ -187,15 +187,15 @@ function Teacher() {
               </Button>
             </form>
           ) : (
-            <span className="p-3">{teachers.email}</span>
+            <span className="p-3">{teacher.email}</span>
           )}
         </td>
         <td>
-          {editingTeacherId !== teachers._id && (
+          {editingTeacherId !== teacher._id && (
             <Button
               type="button"
               variant="warning"
-              onClick={() => handleEditTeacher(teachers._id)}
+              onClick={() => handleEditTeacher(teacher._id)}
             >
               <i className="fa-solid fa-user-pen"></i>
             </Button>
@@ -206,7 +206,7 @@ function Teacher() {
             type="button"
             variant="danger"
            
-            onClick={() => handleDeleteTeacher(teachers._id)}
+            onClick={() => handleDeleteTeacher(teacher._id)}
           >
             <i className="fa-solid fa-user-minus"></i>
           </Button>
