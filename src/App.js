@@ -26,6 +26,7 @@ const App = () => {
       <Route path='/' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       {user ?(<>
+      <Route path='/' element={<Home/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/teachers' element={<Teacher/>}/>
       <Route path='/students' element={<Recipients/>}/>
