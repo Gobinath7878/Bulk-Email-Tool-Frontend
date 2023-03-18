@@ -1,77 +1,72 @@
-.login_img{
-    width: 60%;
-    text-align: center;
+.login-container{
+    height:70vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.login_img img{
-    width: 100%;
-    object-fit: contain;
-    height: 500px;
+.form-container{
+    /* background-color: rgb(231, 243, 206); */
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
 }
-.login_form{
-    padding: 50px;
-    background: var(--secondary-color);
-    position: relative;
-    margin-bottom: 20px;
+.login-input{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
-.login_container{
-    margin-top: 100px;
-    border-radius: 5px;
+.login-input p{
+    margin-top: 20px;
+    margin-right: 75px;
 }
-.login_container .user{
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    top: -9%;
-    left: 50%;
-    transform: translate(-50%,-9%);   
+.login-input input{
+    background-color: rgb(243, 242, 242);
+    margin-bottom: 15px;
+    width: 350px;
 }
-.login_form .user img{
-    width: 100%;
-    object-fit: contain;
-}
-.login_form h2{
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 25px;
-    font-weight: 800;
-}
-.login_form{
-    width: 50%;
-}
-.login_form input{
-    width: 100%;
-    padding: 8px 16px;
-    border-radius:5px;
-    border: none;
-    font-size: 16px;
-    color: var(--heading-color);
-    background-color: rgb(218, 223, 218);
-    margin-bottom: 20px;
-}
-.login_form input:focus{
-    outline: none !important;
+.login-input button{
+    width: 350px;
+    margin-bottom: 15px;
 }
 
-.login_form p{
-    font-size: 16px;
-    color: #fff;
-    margin-top: 24px;
-    text-align: center;
-}
-.login_form a{
-    text-decoration: none;
-    color: var(--heading-color) !important;
-    font-weight: 600;
-}
 
-@media screen and (max-width:768px) {
-    .login_container{
+@media screen and (max-width:998px) {
+
+    .login-container{
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
     }
-    .login_form{
-        width: 100%;
+    .loginImg{
+      display: none !important;
     }
-}
+    .form-container{
+        /* background-color: rgb(231, 243, 206); */
+        border-radius: 10px;
+        margin-top: 20px;
+        display: flex;
+
+    }
+  }
+  @media screen and (max-width:368px) {
+    .login-input input{
+        background-color: rgb(243, 242, 242);
+        margin-bottom: 15px;
+        width: 280px;
+    }
+    .login-input button{
+        width: 280px;
+        margin-bottom: 15px;
+    }
+    .login-input p{
+        margin-top: 10px;
+        width: 280px;
+       text-align: center;
+       margin-left: 60px;
+       font-size: 12px !important;
+    }
+  }

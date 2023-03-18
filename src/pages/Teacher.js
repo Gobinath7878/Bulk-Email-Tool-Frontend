@@ -14,8 +14,10 @@ function Teacher() {
   const [newTeacher, setNewTeacher] = useState("");
   const [editedTeacher, setEditedTeacher] = useState("");
   const [editingTeacherId, setEditingTeacherId] = useState(null);
-  // const [errorMessage, setErrorMessage] = useState("");
-  // const [sucessMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [Loading, setLoading] = useState(false);
+
+  
 
   const [show, setShow] = useState(false);
 
@@ -36,22 +38,46 @@ function Teacher() {
   }, []);
 
   //add Teacher
+  // const handleAddTeacher = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     setIsLoading(true);
+  //     const response = await api.post("/api/v1/teacher/create", {
+  //       email: newTeacher
+  //     });
+  //     setTeachers([...teachers, response.data]);
+  //     toast.success("Teacher added successfully");
+  //     setNewTeacher("");
+    
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error("Error adding Teacher");
+      
+  //   }
+  //   finally{
+  //     setIsLoading(false)
+  //   }
+  // };
   const handleAddTeacher = async (event) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       const response = await api.post("/api/v1/teacher/create", {
         email: newTeacher
       });
-      setTeachers([...teachers, response.data]);
-      toast.success("Teacher added successfully");
-      setNewTeacher("");
-    // set timeout for success message to disappear after 3 seconds
+     
+        setTeachers([...teachers, response.data]);
+        toast.success("Teacher added successfully");
+        setNewTeacher("");
+      
     } catch (error) {
       console.log(error);
-      toast.error("Error adding Teacher");
-      // set timeout for error message to disappear after 3 seconds
+      toast.error("Error adding Teacher (or) Email is already Exist");
+    } finally {
+      setIsLoading(false);
     }
   };
+  
 
   const handleDeleteTeacher = async (id) => {
     try {
@@ -74,6 +100,7 @@ function Teacher() {
   const handleUpdateTeacher = async (event) => {
     event.preventDefault();
     try {
+      setLoading(true)
       const response = await api.put(
         `/api/v1/teacher/put/${editingTeacherId}`,
         {
@@ -92,6 +119,9 @@ function Teacher() {
       console.log(error);
       toast.error("Error updating Teacher");
     }
+    finally{
+      setLoading(false)
+    }
   };
 
   return (
@@ -102,8 +132,7 @@ function Teacher() {
           <Col lg="10">
             <div>
             <h2 className='fw-bold'><sup><i className="fa-solid fa-quote-left"></i></sup><span>Connecting Teachers,</span> <br/>Empowering Education: Stay in Touch with Our Email Hub!</h2>
-              {/* {errorMessage && <p>{errorMessage}</p>} */}
-              {/* {sucessMessage && <p>{sucessMessage}</p>} */}
+             
               <form onSubmit={handleAddTeacher}>
               <div className="input-container">
                  
@@ -115,9 +144,14 @@ function Teacher() {
                     required
                   />
                 
-                <button type="submit" className="button-send w-25 mx-2">
-                  Add
-                </button>
+                <button
+                    type="submit"
+                    disabled={isLoading}
+                    style={{ backgroundColor: isLoading ? "green" : "" }}
+                    className="button-send w-25 mx-2"
+                  >
+                    {isLoading ? "Adding..." : "Add"}{" "}
+                  </button>
                 </div>
               </form>
               <p><span className="text-danger">*</span>It's important to ensure that the teacher's email address is correct, as this will be the primary way of communicating with them through the school website.</p>
@@ -174,8 +208,9 @@ function Teacher() {
                   onChange={(event) => setEditedTeacher(event.target.value)}
                 />
               </label>
-              <Button type="submit" variant="success" className="mx-2">
-                Save
+                    
+              <Button type="submit" variant="success" className="mx-2" style={{ backgroundColor: Loading ? "green" : "" }} >
+              {Loading ? "Saving..." : "Save"}{" "}
               </Button>
               <Button
                 type="button"

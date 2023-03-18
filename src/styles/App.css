@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Poppins:wght@300;400;500;600;700&family=Zeyada&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -27,6 +27,9 @@ input{
   font-size:18px;
   border-radius:5px;
   border: none !important;
+}
+.school-name{
+  font-family: 'Covered By Your Grace', cursive;
 }
 /* home css */
 .about-container {
@@ -133,5 +136,68 @@ input{
   .canvas-container{
     background: #cae5fa;
   }
+.link.active{
+  color: rgb(49, 211, 8) !important;
+}
 
+  @media screen and (max-width:568px) {
+    .teacher-container h2{
+      font-size: 15px;
+      margin-bottom: 32px;
+      color: rgb(41, 42, 43);
+      padding:5px;
+    }
+    .teacher-container h2 i{
+      font-size: 20px;
+      padding-right:5px;
+    }
+    .teacher-container h2 span{
+      font-size:25px;
+    }
+    .teacher-container p{
+       padding-left: 0 !important;
+       padding: 15px;
+        font-size:12px;
+        text-align:justify;
+    }
+    .teacher-container p span{
+      font-size: 15px;
+    }
+    .input-container{
+      background-color: white;
+      width:350px;
+      border-radius: 5px;
+    }
+    .button-send{
+      width: 300px !important;
+      height: 45px;
+      padding:5px;
+      border: none !important;
+      border-radius: 5px;
+      background: rgb(9, 25, 117);
+      color: rgb(250, 250, 250);
+      margin-top: 10px;
+    }
+  }
+
+  @media screen and (max-width:428px) {
+    .input-container input{
+      width:200px;
+
+    }
+    .input-container{
+      background-color: white;
+      width:250px;
+      border-radius: 5px;
+    }
+    .button-send{
+      width: 200px !important;
+      height: 45px;
+      border: none !important;
+      border-radius: 5px;
+      background: rgb(9, 25, 117);
+      color: rgb(250, 250, 250);
+      margin-top: 10px;
+    }
+  }
 

@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {Link,useNavigate } from 'react-router-dom'
 import {AuthContext} from './../context/AuthContext'
+
 function Navigation() {
   const navigate = useNavigate();
   const { user, dispatch } = useContext(AuthContext);
@@ -19,7 +20,7 @@ function Navigation() {
       {['md'].map((expand) => (
         <Navbar key={expand} bg="light" expand={expand} className="py-3">
           <Container fluid>
-            <Link to="/" className='fw-bold mx-3'>CheGo School</Link>
+            <Link to="/home" className='fw-bold mx-3 fs-3 school-name'>CheG<i className="fa-solid fa-graduation-cap"></i> School</Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -28,7 +29,7 @@ function Navigation() {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
+                  Menu
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -53,7 +54,7 @@ function Navigation() {
                   </>):(
                     <div className='d-flex gap-3 p-2'>
                         
-                        <Link to='/login' className='link'>Login</Link>
+                        <Link to='/' className='link'>Login</Link>
                         <Link to='/register' className='link'>Register</Link>
 
 

@@ -22,18 +22,17 @@ const App = () => {
     <BrowserRouter>
     <Navigation/>
     <Routes>
-      <Route path='/' element={<Home/>}/>
-      {/* <Route path='/students' element={<Recipients/>}/> */}
-      {/* <Route path='/send/email' element={<SendEmail/>} /> */}
-      {/* <Route path='/teachers' element={<Teacher/>}/> */}
-      <Route path='/login' element={<Login/>}/>
+      
+      <Route path='/' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       {user ?(<>
+      <Route path='/home' element={<Home/>}/>
       <Route path='/teachers' element={<Teacher/>}/>
       <Route path='/students' element={<Recipients/>}/>
       </>
       ):(
         <>
+      <Route path='/home' element={<Login/>}/>
       <Route path='/teachers' element={<Login/>}/>
       <Route path='/students' element={<Login/>}/>
 

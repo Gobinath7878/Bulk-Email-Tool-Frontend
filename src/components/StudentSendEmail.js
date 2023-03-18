@@ -10,6 +10,7 @@ function SendEmail() {
   const [message, setMessage] = useState("");
   const [recipientIds, setRecipientIds] = useState([]);
   const [recipients, setRecipients] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
  
   useEffect(() => {
     getRecipients();
@@ -36,6 +37,7 @@ function SendEmail() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       const selectedRecipients = recipients.filter((recipient) =>
         recipientIds.includes(recipient._id)
       );
@@ -45,17 +47,20 @@ function SendEmail() {
         message,
         recipients: selectedRecipients,
       });
-      toast.success("Mail send Successfully");
+      toast.success(response.data.message);
       setSubject("");
       setMessage("");
       setRecipientIds([]);
       // Fetch the updated recipient list from the server
       const updatedResponse = await api.get("/api/v1/recipient/getAll");
       setRecipients(updatedResponse.data);
-      console.log(response)
+      
     } catch (error) {
       console.log(error);
       toast.error("Error sending mails");
+    }
+    finally {
+      setIsLoading(false);
     }
   };
   
@@ -83,9 +88,19 @@ function SendEmail() {
           required
         ></textarea>
       </div>
-       <Button type="submit" className="button w-100 my-3 fw-bold">Send <i className="fa-solid fa-paper-plane text-success"></i></Button>
+      <Button
+          type="submit"
+          className="button w-100 my-3 fw-bold"
+          disabled={isLoading}
+          style={{ backgroundColor: isLoading ? "green" : "" }}
+        >
+          {isLoading ? "Sending..." : "Send"}{" "}
+          <i className="fa-solid fa-paper-plane text-success"></i>
+        </Button>
       <div>
         <label htmlFor="recipients">To:</label>
+        {recipients.length ===0 ?(<><p className="mt-3 bg-warning text-center p-2 rounded-2 text-white">
+        Loading...</p></>):(
         <ul
           id="recipients"
           value={recipientIds}
@@ -97,7 +112,9 @@ function SendEmail() {
              <i className="fa-solid fa-user-check text-success fs-6"></i> &nbsp; {recipient.email}
             </li>
           ))}
+
         </ul>
+        )}
       </div>
     </form>
     </>
