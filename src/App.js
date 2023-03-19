@@ -23,8 +23,7 @@ const App = () => {
     <Navigation/>
     <Routes>
       
-      <Route path='/' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
+      
       {user ?(<>
       <Route path='/' element={<Home/>}/>
       <Route path='/teachers' element={<Teacher/>}/>
@@ -32,7 +31,8 @@ const App = () => {
       </>
       ):(
         <>
-      <Route path='/home' element={<Login/>}/>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
       <Route path='/teachers' element={<Login/>}/>
       <Route path='/students' element={<Login/>}/>
 
