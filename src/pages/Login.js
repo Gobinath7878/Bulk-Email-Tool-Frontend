@@ -50,7 +50,7 @@ const Login = () => {
       } else{
       dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
       
-      navigate("/home");}
+      navigate("/");}
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.message });
     }
